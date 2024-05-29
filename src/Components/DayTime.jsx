@@ -11,8 +11,8 @@ const DayTime = () => {
     return () => clearInterval(id);
   }, []);
   return (
-    <div className="w-52 h-8  bg-white bg-opacity-40 backdrop-blur-sm hover:bg-transparent transition-all  border-white cursor-pointer">
-      <h5 className="text-blue-950 text-lg text-center hover:text-white">
+    <div className="md:w-52 w-28 h-8   bg-opacity-40 backdrop-blur-sm  transition-all  border-white cursor-pointer flex justify-center items-center">
+      <h5 className="hover:text-blue-950 md:text-lg text-xs text-nowrap text-center text-white ">
         {Day}
       </h5>
     </div>

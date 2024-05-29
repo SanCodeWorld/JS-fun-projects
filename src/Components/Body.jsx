@@ -33,7 +33,7 @@ const Body = () => {
       //   console.log("effect : " + search);----------------------------------------------------
 
       const res1 = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_KEY}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${search}&appid=${API_KEY}`
       ); //url to get geoLocation data---------------------------
       const data1 = await res1.json();
 
@@ -41,7 +41,7 @@ const Body = () => {
       let lon = data1[0].lon;
 
       const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`
       ); //url to get weather info----------------
       const data = await res.json();
       console.log(data.list.length);
@@ -57,33 +57,39 @@ const Body = () => {
 
   return (
     <>
-      <div className="w-4/5 h-11 bg-sky-700 ">
+      <div className="w-4/5 lg:h-11 min-h-fit bg-sky-700  max-[426px]:text-xs">
         <form
-          className="w-full h-full flex items-center"
+          className="w-full flex flex-col max-[1023px]:items-center max-[1023px]:p-2  lg:h-full lg:flex-row lg:items-center "
           onSubmit={handleSubmit}
         >
-          <label
-            htmlFor="city"
-            className="ml-16 mr-4 text-slate-200 font-medium"
-          >
-            City :{" "}
-          </label>
-          <input
-            ref={inputRef}
-            type="text"
-            id="city"
-            className="w-20 text-slate-200 font-medium pl-2 bg-transparent border-b border-white outline-none focus:w-72 focus:bg-transparent transition-all"
-            value={city}
-            onChange={(e) => {
-              setCity(e.target.value);
-            }}
-          />
-          <button
-            type="submit"
-            className="ml-auto mr-40 bg-yellow-200 px-2 py-1 rounded-full hover:bg-yellow-400 border-2 hover:border-white transition-all"
-          >
-            Get Weather Info.
-          </button>
+          <div className="max-[1023px]:mb-2 ">
+            {" "}
+            {/**max-[1023px]:self-start */}
+            <label
+              htmlFor="city"
+              className="ml-16  mr-4 text-slate-200 font-medium max-[1023px]:ml-0 max-[426px]:ml-0 max-[426px]:w-1/5"
+            >
+              City :{" "}
+            </label>
+            <input
+              ref={inputRef}
+              type="text"
+              id="city"
+              className="w-20 text-slate-200 font-medium pl-2 bg-transparent border-b border-white outline-none lg:focus:w-72 lg:focus:bg-transparent transition-all max-[1023px]:w-72 max-[426px]:w-4/5 "
+              value={city}
+              onChange={(e) => {
+                setCity(e.target.value);
+              }}
+            />
+          </div>
+          <div className="lg:mr-14 lg:ml-auto">
+            <button
+              type="submit"
+              className=" bg-yellow-200 px-2 py-1 rounded-full hover:bg-yellow-400 border-2 hover:border-white transition-all"
+            >
+              Get Weather Info.
+            </button>
+          </div>
         </form>
       </div>
       {show && (
