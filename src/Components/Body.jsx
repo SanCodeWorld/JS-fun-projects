@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { API_KEY } from "./API";
+// import { API_KEY } from "./API";
 import Weather from "./Weather";
 import { findExactData } from "./findExactData";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const Body = () => {
   const [city, setCity] = useState("");
